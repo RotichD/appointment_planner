@@ -13,8 +13,27 @@ function App() {
   const [appointments, setAppointments] = useState([]);
   const [contacts, setContacts] = useState([]);
 
-  const pushContact = (newContactObject) => {
-    setContacts((contacts) => [...contacts, newContactObject]);
+  const addContact = (name, phoneNumber, email) => {
+    setContacts([
+      ...contacts,
+      {
+        name: name,
+        phoneNumber: phoneNumber,
+        email: email,
+      },
+    ]);
+  };
+
+  const addAppointment = (title, contact, date, time) => {
+    setAppointments([
+      ...appointments,
+      {
+        title: title,
+        contact: contact,
+        date: date,
+        time: time,
+      },
+    ]);
   };
 
   const ROUTES = {
@@ -44,11 +63,11 @@ function App() {
           </Route>
           <Route path={ROUTES.CONTACTS}>
             {/* Add props to ContactsPage */}
-            <ContactsPage />
+            <ContactsPage contacts={contacts} addContact={addContact} />
           </Route>
           <Route path={ROUTES.APPOINTMENTS}>
             {/* Add props to AppointmentsPage */}
-            <AppointmentsPage />
+            <AppointmentsPage appointments={appointments} addAppointment={addAppointment} />
           </Route>
         </Switch>
       </main>
