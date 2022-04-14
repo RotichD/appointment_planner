@@ -3,8 +3,8 @@ import React from "react";
 export const ContactForm = ({
   name,
   setName,
-  phone,
-  setPhone,
+  phoneNumber,
+  setPhoneNumber,
   email,
   setEmail,
   handleSubmit
