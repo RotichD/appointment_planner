@@ -5,10 +5,6 @@ import { AppointmentsPage } from './containers/appointmentsPage/AppointmentsPage
 import { ContactsPage } from './containers/contactsPage/ContactsPage';
 
 function App() {
-  /*
-  Define state variables for 
-  contacts and appointments 
-  */
 
   const [appointments, setAppointments] = useState([]);
   const [contacts, setContacts] = useState([]);
@@ -41,10 +37,6 @@ function App() {
     APPOINTMENTS: '/appointments',
   };
 
-  /*
-  Implement functions to add data to
-  contacts and appointments
-  */
 
   return (
     <>
@@ -62,12 +54,14 @@ function App() {
             <Redirect to={ROUTES.CONTACTS} />
           </Route>
           <Route path={ROUTES.CONTACTS}>
-            {/* Add props to ContactsPage */}
             <ContactsPage contacts={contacts} addContact={addContact} />
           </Route>
           <Route path={ROUTES.APPOINTMENTS}>
-            {/* Add props to AppointmentsPage */}
-            <AppointmentsPage appointments={appointments} addAppointment={addAppointment} />
+            <AppointmentsPage
+              appointments={appointments}
+              contacts={contacts}
+              addAppointment={addAppointment}
+            />
           </Route>
         </Switch>
       </main>
